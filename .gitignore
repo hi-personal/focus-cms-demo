@@ -1,0 +1,32 @@
+# =========================
+# Focus CMS Docker Demo
+# =========================
+
+# -------------------------
+# Web application source
+# -------------------------
+webstack/www/*
+!webstack/www/.gitkeep
+
+# -------------------------
+# Node modules
+# -------------------------
+nodejs/node_modules/*
+!nodejs/node_modules/.gitkeep
+
+# -------------------------
+# Database data (MariaDB)
+# -------------------------
+db/db_data/*
+!db/db_data/.gitkeep
+
+# -------------------------
+# OS
+# -------------------------
+.DS_Store
+Thumbs.db
+
+# -------------------------
+# Logs
+# -------------------------
+*.log

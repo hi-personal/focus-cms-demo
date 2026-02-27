@@ -1,0 +1,43 @@
+services:
+
+  app:
+    container_name: focuscmsdemo-app
+    restart: unless-stopped
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "90:90"
+    volumes:
+      - ./www:/var/www
+      - ./php.ini:/usr/local/etc/php/conf.d/custom.ini
+    networks:
+      - ssd-net
+
+  phpmyadmin:
+    image: phpmyadmin:latest
+    container_name: focuscmsdemo-phpmyadmin
+    restart: unless-stopped
+    ports:
+      - "8081:80"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    environment:
+      PMA_HOST: focuscmsdemo-db
+      PMA_USER: root
+      PMA_PASSWORD: root
+    networks:
+      - ssd-net
+
+  mailhog:
+    image: mailhog/mailhog
+    container_name: focuscmsdemo-mailhog
+    ports:
+      - "1025:1025"
+      - "8025:8025"
+    networks:
+      - ssd-net
+
+networks:
+  ssd-net:
+    external: true

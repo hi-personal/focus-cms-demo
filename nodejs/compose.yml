@@ -1,0 +1,30 @@
+services:
+  node:
+    user: "1000:1000"
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports: 
+      - "5173:5173"
+    container_name: focuscmsdemo-nj
+    working_dir: /var/www/focuscms
+    command: tail -f /dev/null
+    volumes:
+      - ../webstack/www:/var/www
+      - node_modules:/var/www/focuscms/node_modules
+    networks:
+      - ssd-net
+
+networks:
+  ssd-net:
+    external: true
+
+volumes:
+  node_modules:
+
+
+
+#
+# docker compose build
+# docker compose up -d
+# docker exec -u root -it focuscmsdemo-nj chown -R 1000:1000 /var/www/focuscms/node_modules

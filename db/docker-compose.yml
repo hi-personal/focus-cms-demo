@@ -1,0 +1,27 @@
+services:
+  db:
+    image: mariadb:11
+    container_name: focuscmsdemo-db
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: focuscmsdemo
+      MYSQL_USER: focuscmsdemo
+      MYSQL_PASSWORD: focuscmsdemo
+    ports:
+      - "3306:3306"
+    networks:
+      - ssd-net
+    user: "1000:1000"
+    volumes:
+      - ./db_data:/var/lib/mysql
+    command: >
+      sh -c "
+        chown -R 1000:1000 /var/lib/mysql &&
+        chmod -R 755 /var/lib/mysql &&
+        exec docker-entrypoint.sh mariadbd
+      "
+
+networks:
+  ssd-net:
+    external: true
