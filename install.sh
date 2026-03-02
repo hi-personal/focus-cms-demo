@@ -260,8 +260,8 @@ require 'vendor/autoload.php';
 Illuminate\Support\Facades\Mail::raw(
     'MailHog teszt',
     function (\$message) {
-        \$message->from('test@focuscms.local', 'Focus CMS')
-                ->to('demo@focuscms.demo')
+        \$message->from('test@focuscms.dev', 'Focus CMS')
+                ->to('demo@focuscms.dev')
                 ->subject('MailHog Test');
     }
 );
