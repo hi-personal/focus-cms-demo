@@ -1,32 +1,54 @@
 # =========================
-# Focus CMS Docker Demo
+# Environment
 # =========================
+.env
+.env.*
+!.env.example
 
-# -------------------------
-# Web application source
-# -------------------------
-webstack/www/*
-!webstack/www/.gitkeep
+# =========================
+# MariaDB data
+# =========================
+db/db_data/
 
-# -------------------------
-# Node modules
-# -------------------------
-nodejs/node_modules/*
-!nodejs/node_modules/.gitkeep
+# =========================
+# Cloned Focus CMS
+# =========================
+webstack/www/focuscms/
 
-# -------------------------
-# Database data (MariaDB)
-# -------------------------
-db/db_data/*
-!db/db_data/.gitkeep
+# =========================
+# Node
+# =========================
+node_modules/
+npm-debug.log*
+yarn.lock
+pnpm-lock.yaml
 
-# -------------------------
-# OS
-# -------------------------
+# =========================
+# Logs
+# =========================
+*.log
+logs/
+
+# =========================
+# Docker overrides
+# =========================
+docker-compose.override.yml
+
+# =========================
+# OS files
+# =========================
 .DS_Store
 Thumbs.db
 
-# -------------------------
-# Logs
-# -------------------------
-*.log
+# =========================
+# IDE
+# =========================
+.vscode/
+.idea/
+
+# =========================
+# Misc
+# =========================
+*.swp
+*.bak
+*.tmp

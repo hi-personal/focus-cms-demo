@@ -1,16 +1,11 @@
-FROM node:20
+FROM node:22
 
-ARG UID=1000
-ARG GID=1000
-ARG USERNAME=istvan
+# Környezeti változók build-time
+ARG DEV_UID
+ARG DEV_GID
+ARG DEV_USER
 
-RUN set -eux; \
-    if ! getent group ${GID} >/dev/null; then \
-        groupadd -g ${GID} ${USERNAME}; \
-    fi; \
-    if ! id -u ${UID} >/dev/null 2>&1; then \
-        useradd -u ${UID} -g ${GID} -m ${USERNAME}; \
-    fi
+# Átváltás a dinamikus user-re
+USER ${DEV_USER}
 
-USER ${USERNAME}
 WORKDIR /var/www/focuscms

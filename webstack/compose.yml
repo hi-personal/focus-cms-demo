@@ -6,13 +6,17 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+      args:
+        DEV_USER: ${DEV_USER}
+        DEV_UID: ${DEV_UID}
+        DEV_GID: ${DEV_GID}
     ports:
       - "90:90"
     volumes:
       - ./www:/var/www
       - ./php.ini:/usr/local/etc/php/conf.d/custom.ini
     networks:
-      - ssd-net
+      - demo-net
 
   phpmyadmin:
     image: phpmyadmin:latest
@@ -27,7 +31,7 @@ services:
       PMA_USER: root
       PMA_PASSWORD: root
     networks:
-      - ssd-net
+      - demo-net
 
   mailhog:
     image: mailhog/mailhog
@@ -36,8 +40,8 @@ services:
       - "1025:1025"
       - "8025:8025"
     networks:
-      - ssd-net
+      - demo-net
 
 networks:
-  ssd-net:
+  demo-net:
     external: true
