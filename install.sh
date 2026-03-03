@@ -216,7 +216,6 @@ success "Modulok aktiválva"
 # =========================
 section "Sablon setup"
 
-run_artisan theme:setup FocusDefaultTheme
 run_artisan theme:set FocusDefaultTheme
 success "Sablon aktiválva"
 
