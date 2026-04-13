@@ -3,7 +3,7 @@
 ## Composer alapú Focus CMS modul- és sablontelepítő
 
 **Szerző:** Hatala István
-**Weboldal:** https://focuscms.hatalaistvan.hu
+**Weboldal:** https://focuscms.infokonnyeden.hu
 
 ---
 
